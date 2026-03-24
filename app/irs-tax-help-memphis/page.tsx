@@ -400,6 +400,7 @@ export default function IrsHelpPage() {
           </div>
         </div>
       </footer>
+    </div>
     </>
   );
 }

@@ -411,6 +411,7 @@ export default function TaxAdvancePage() {
           </div>
         </div>
       </footer>
+    </div>
     </>
   );
 }
