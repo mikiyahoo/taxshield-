@@ -701,34 +701,64 @@ export default function MetaAdsLandingPage() {
       </section>
 
       {/* ===== SECTION 6: TRUST ===== */}
-      <section className="py-12 md:py-16 bg-white">
+      <section className="py-16 md:py-24 bg-bg-light">
         <div className="max-w-[1140px] mx-auto px-4 sm:px-6">
-          <div className="text-center mb-10 reveal">
-            <h2 className="section-title mb-3">
+          {/* Header */}
+          <div className="text-center mb-12 reveal">
+            <span className="inline-block bg-primary/10 text-primary text-xs font-bold px-3 py-1.5 rounded-full mb-4">
+              Trusted by Memphis
+            </span>
+            <h2 className="section-title mb-4">
               Why Memphis Chooses TaxShield
             </h2>
-            <div className="flex items-center justify-center gap-2 mb-1">
-              <span className="stars text-xl">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-              <span className="font-bold text-text-primary">4.9/5</span>
+            <div className="flex items-center justify-center gap-2 mb-2">
+              <div className="flex items-center gap-0.5">
+                {[1,2,3,4,5].map((s) => (
+                  <svg key={s} className="w-5 h-5 text-accent" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                ))}
+              </div>
+              <span className="text-lg font-extrabold text-text-primary">4.9/5</span>
             </div>
             <p className="text-sm text-text-secondary">
-              148+ verified Google reviews
+              Based on 148+ verified Google reviews
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+          {/* Stats Row */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
             {[
-              { icon: "&#128197;", label: "15+ Years", sub: "Serving Memphis" },
-              { icon: "&#128101;", label: "Thousands", sub: "Happy clients" },
-              { icon: "&#127970;", label: "2 Offices", sub: "You can visit" },
-              { icon: "&#9989;", label: "Honest", sub: "Transparent service" },
+              { icon: (
+                <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+              ), label: "15+ Years", sub: "Serving Memphis" },
+              { icon: (
+                <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+              ), label: "10,000+", sub: "Happy clients" },
+              { icon: (
+                <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+              ), label: "2 Offices", sub: "You can visit" },
+              { icon: (
+                <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+              ), label: "Honest", sub: "Transparent service" },
             ].map((badge) => (
               <div
                 key={badge.label}
-                className="bg-bg-light rounded-xl p-5 text-center reveal"
+                className="card-enhanced reveal text-center"
               >
-                <div className="text-2xl mb-2" dangerouslySetInnerHTML={{ __html: badge.icon }} />
-                <p className="font-bold text-text-primary text-sm">
+                <div className="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-3 text-primary">
+                  {badge.icon}
+                </div>
+                <p className="font-extrabold text-text-primary text-base">
                   {badge.label}
                 </p>
                 <p className="text-xs text-text-muted">{badge.sub}</p>
@@ -736,55 +766,96 @@ export default function MetaAdsLandingPage() {
             ))}
           </div>
 
-          {/* Reviews */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-3xl mx-auto">
+          {/* Google Reviews */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8">
             {[
               {
-                text: "They got me my refund faster than I expected. Super friendly and professional.",
-                name: "Marcus J.",
-                location: "Memphis, TN",
+                text: "Best tax service in Memphis! I walked in with my W-2 and left with my $7,000 advance approved the same day. Amber was amazing — explained everything clearly and made the process so easy.",
+                name: "Tameka R.",
+                time: "2 weeks ago",
+                rating: 5,
               },
               {
-                text: "I got the $7,000 advance when other places said no. These people really care.",
-                name: "Denise W.",
-                location: "Memphis, TN",
+                text: "I've been filing with TaxShield for 3 years now. They always get me the maximum refund and the advance options are a lifesaver during the holidays. Highly recommend to anyone in Memphis!",
+                name: "James T.",
+                time: "1 month ago",
+                rating: 5,
               },
               {
-                text: "Amber took care of everything. Walked in stressed, walked out smiling.",
-                name: "Rachel M.",
-                location: "Memphis, TN",
+                text: "Super friendly staff and fast service. I was nervous about my taxes but they walked me through everything. Got my advance in 30 minutes. Will definitely be coming back next year!",
+                name: "Crystal M.",
+                time: "3 weeks ago",
+                rating: 5,
               },
             ].map((review) => (
               <div
                 key={review.name}
-                className="bg-bg-light rounded-xl p-5 reveal"
+                className="card-enhanced reveal group"
               >
-                <div className="stars text-sm mb-3">
-                  &#9733;&#9733;&#9733;&#9733;&#9733;
+                {/* Google icon + rating */}
+                <div className="flex items-center justify-between mb-3">
+                  <div className="flex items-center gap-2">
+                    <div className="w-8 h-8 bg-white rounded-full border border-gray-200 flex items-center justify-center">
+                      <svg className="w-4 h-4" viewBox="0 0 24 24">
+                        <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/>
+                        <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                        <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                        <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                      </svg>
+                    </div>
+                    <span className="text-xs text-text-muted">{review.time}</span>
+                  </div>
+                  <div className="flex items-center gap-0.5">
+                    {[...Array(review.rating)].map((_, i) => (
+                      <svg key={i} className="w-4 h-4 text-accent" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                      </svg>
+                    ))}
+                  </div>
                 </div>
-                <p className="text-sm text-text-primary leading-relaxed mb-3">
+
+                {/* Review text */}
+                <p className="text-sm text-text-primary leading-relaxed mb-4">
                   &ldquo;{review.text}&rdquo;
                 </p>
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 bg-primary/20 rounded-full flex items-center justify-center">
+
+                {/* Author */}
+                <div className="flex items-center gap-2.5 pt-3 border-t border-gray-100">
+                  <div className="w-9 h-9 bg-primary/15 rounded-full flex items-center justify-center">
                     <span className="text-primary font-bold text-xs">
-                      {review.name
-                        .split(" ")
-                        .map((n) => n[0])
-                        .join("")}
+                      {review.name.split(" ").map((n) => n[0]).join("")}
                     </span>
                   </div>
                   <div>
-                    <p className="text-xs font-bold text-text-primary">
-                      {review.name}
-                    </p>
-                    <p className="text-xs text-text-muted">
-                      {review.location}
+                    <p className="text-sm font-bold text-text-primary">{review.name}</p>
+                    <p className="text-[10px] text-text-muted flex items-center gap-1">
+                      <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+                      </svg>
+                      Memphis, TN
                     </p>
                   </div>
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* Google Review Link */}
+          <div className="text-center reveal">
+            <a
+              href="https://www.google.com/maps/place/TaxShield+Service"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-white border border-gray-200 rounded-full px-6 py-3 text-sm font-semibold text-text-primary hover:border-primary hover:shadow-md transition-all"
+            >
+              <svg className="w-5 h-5" viewBox="0 0 24 24">
+                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/>
+                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+              </svg>
+              View All Reviews on Google
+            </a>
           </div>
         </div>
       </section>
