@@ -144,7 +144,7 @@ function LeadForm({ onClose }: { onClose: () => void }) {
 
   return (
     <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4">
-      <div className="bg-white rounded-2xl w-full overflow-hidden shadow-2xl animate-scale-in flex flex-col md:flex-row" style={{ maxWidth: "1100px", maxHeight: "520px" }}>
+      <div className="bg-white rounded-2xl w-full overflow-hidden shadow-2xl animate-scale-in flex flex-col md:flex-row" style={{ maxWidth: "1100px", maxHeight: "580px" }}>
         {/* Close button */}
         <button
           onClick={onClose}
@@ -156,7 +156,7 @@ function LeadForm({ onClose }: { onClose: () => void }) {
         </button>
 
         {/* LEFT PANEL: Trust + Context */}
-        <div className="text-white p-6 md:p-8 md:w-[35%] flex-shrink-0 flex flex-col justify-between" style={{ background: "#3d2770" }}>
+        <div className="text-white p-8 md:p-10 md:w-[35%] flex-shrink-0 flex flex-col justify-between" style={{ background: "#3d2770" }}>
           <div>
             <h3 className="text-lg font-bold mb-1">Before You Apply</h3>
             <p className="text-white/60 text-xs mb-4">What you can expect</p>
@@ -224,7 +224,7 @@ function LeadForm({ onClose }: { onClose: () => void }) {
         </div>
 
         {/* RIGHT PANEL: Form */}
-        <div className="p-5 md:p-6 md:w-[65%] overflow-y-auto flex-1">
+        <div className="p-6 md:p-8 md:w-[65%] overflow-y-auto flex-1">
           {/* Form Header */}
           <div className="mb-4">
             <h3 className="text-lg font-extrabold text-text-primary mb-0.5">
@@ -243,42 +243,40 @@ function LeadForm({ onClose }: { onClose: () => void }) {
           <form onSubmit={handleSubmit}>
             {step === 1 ? (
               <div className="space-y-4">
-                {/* Step 1: Quick Qualifiers - Side by side */}
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-xs font-semibold text-text-primary mb-1.5">
-                      Do you have W-2 income this year?
-                    </label>
-                    <div className="flex gap-2">
-                      {["Yes", "No"].map((opt) => (
-                        <button
-                          key={opt}
-                          type="button"
-                          onClick={() => setW2(opt)}
-                          className={`quiz-option flex-1 !py-2 !px-3 !text-sm ${w2 === opt ? "selected" : ""}`}
-                        >
-                          {opt}
-                        </button>
-                      ))}
-                    </div>
+                {/* Step 1: Quick Qualifiers - Stacked vertically */}
+                <div>
+                  <label className="block text-sm font-semibold text-text-primary mb-2">
+                    Do you have W-2 income this year?
+                  </label>
+                  <div className="flex gap-2">
+                    {["Yes", "No"].map((opt) => (
+                      <button
+                        key={opt}
+                        type="button"
+                        onClick={() => setW2(opt)}
+                        className={`quiz-option flex-1 !py-3 !px-4 !text-sm ${w2 === opt ? "selected" : ""}`}
+                      >
+                        {opt}
+                      </button>
+                    ))}
                   </div>
+                </div>
 
-                  <div>
-                    <label className="block text-xs font-semibold text-text-primary mb-1.5">
-                      Are you expecting a tax refund?
-                    </label>
-                    <div className="flex gap-2">
-                      {["Yes", "No", "Not Sure"].map((opt) => (
-                        <button
-                          key={opt}
-                          type="button"
-                          onClick={() => setRefund(opt)}
-                          className={`quiz-option flex-1 !py-2 !px-2 !text-xs ${refund === opt ? "selected" : ""}`}
-                        >
-                          {opt}
-                        </button>
-                      ))}
-                    </div>
+                <div>
+                  <label className="block text-sm font-semibold text-text-primary mb-2">
+                    Are you expecting a tax refund?
+                  </label>
+                  <div className="flex gap-2">
+                    {["Yes", "No", "Not Sure"].map((opt) => (
+                      <button
+                        key={opt}
+                        type="button"
+                        onClick={() => setRefund(opt)}
+                        className={`quiz-option flex-1 !py-3 !px-4 !text-sm ${refund === opt ? "selected" : ""}`}
+                      >
+                        {opt}
+                      </button>
+                    ))}
                   </div>
                 </div>
 
