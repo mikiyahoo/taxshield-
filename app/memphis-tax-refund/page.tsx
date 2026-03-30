@@ -447,16 +447,16 @@ export default function MetaAdsLandingPage() {
 
             {/* Right: Full-height image with floating badges */}
             <div className="hidden lg:block relative" style={{ overflow: "visible" }}>
-              <div className="relative" style={{ overflow: "visible" }}>
+              <div className="relative" style={{ overflow: "visible", height: "700px" }}>
                 <img
                   src="/images/refund%20guy.png"
                   alt="Tax refund specialist"
                   className="absolute bottom-0 right-0 object-contain object-bottom"
-                  style={{ height: "1000px", width: "auto", maxWidth: "none" }}
+                  style={{ height: "700px", width: "auto", maxWidth: "none" }}
                 />
 
-                {/* Floating Badge 1: $0 Filing */}
-                <div className="floating-badge top-[15%] -left-4 flex items-center gap-2">
+                {/* Floating Badge 1: $0 Filing - left side, upper body */}
+                <div className="floating-badge flex items-center gap-2" style={{ top: "120px", left: "-10px" }}>
                   <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center flex-shrink-0">
                     <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -468,8 +468,8 @@ export default function MetaAdsLandingPage() {
                   </div>
                 </div>
 
-                {/* Floating Badge 2: $7,000 Advance */}
-                <div className="floating-badge top-[8%] -right-4 flex items-center gap-2" style={{ animationDelay: "0.5s" }}>
+                {/* Floating Badge 2: $7,000 Advance - right side, shoulder level */}
+                <div className="floating-badge flex items-center gap-2" style={{ top: "60px", right: "20px", animationDelay: "0.5s" }}>
                   <div className="w-10 h-10 bg-accent rounded-xl flex items-center justify-center flex-shrink-0">
                     <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -481,8 +481,8 @@ export default function MetaAdsLandingPage() {
                   </div>
                 </div>
 
-                {/* Floating Badge 3: No Fees */}
-                <div className="floating-badge bottom-[18%] -right-4 flex items-center gap-2" style={{ animationDelay: "1s" }}>
+                {/* Floating Badge 3: No Fees - right side, lower */}
+                <div className="floating-badge flex items-center gap-2" style={{ bottom: "180px", right: "10px", animationDelay: "1s" }}>
                   <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center flex-shrink-0">
                     <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
