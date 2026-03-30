@@ -144,7 +144,7 @@ function LeadForm({ onClose }: { onClose: () => void }) {
 
   return (
     <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
-      <div className="bg-white rounded-2xl max-w-3xl w-full overflow-hidden shadow-2xl animate-fade-in-up flex flex-col md:flex-row max-h-[90vh]">
+      <div className="bg-white rounded-2xl max-w-4xl w-full overflow-hidden shadow-2xl animate-fade-in-up flex flex-col md:flex-row max-h-[85vh]">
         {/* Close button */}
         <button
           onClick={onClose}
@@ -156,7 +156,7 @@ function LeadForm({ onClose }: { onClose: () => void }) {
         </button>
 
         {/* LEFT PANEL: Trust + Context */}
-        <div className="bg-gradient-brand text-white p-8 md:p-10 md:w-[42%] flex-shrink-0 flex flex-col justify-between">
+        <div className="bg-gradient-brand text-white p-8 md:p-10 md:w-[40%] flex-shrink-0 flex flex-col justify-between overflow-y-auto">
           <div>
             <h3 className="text-xl font-bold mb-1">Before You Apply</h3>
             <p className="text-white/70 text-sm mb-6">What you can expect</p>
@@ -224,7 +224,7 @@ function LeadForm({ onClose }: { onClose: () => void }) {
         </div>
 
         {/* RIGHT PANEL: Form */}
-        <div className="p-6 md:p-8 md:w-[58%] overflow-y-auto">
+        <div className="p-6 md:p-8 md:w-[60%] overflow-y-auto flex-1">
           {/* Form Header */}
           <div className="mb-5">
             <h3 className="text-xl font-bold text-text-primary mb-1">
@@ -410,7 +410,7 @@ export default function MetaAdsLandingPage() {
         </div>
 
         <div className="relative max-w-[1140px] mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center min-h-[500px] lg:min-h-[600px]">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center min-h-[500px] lg:min-h-[700px]">
             {/* Left: Text + CTAs */}
             <div className="animate-fade-in-up py-14 md:py-20 lg:py-24">
               <span className="inline-flex items-center gap-2 bg-white/15 text-white text-sm font-bold px-4 py-2 rounded-full mb-5 border border-white/20">
@@ -447,7 +447,7 @@ export default function MetaAdsLandingPage() {
 
             {/* Right: Image with floating bullet badges */}
             <div className="relative animate-slide-right hidden lg:flex justify-end items-end self-end -mb-1">
-              <div className="relative w-full max-w-md">
+              <div className="relative w-full max-w-xl">
                 {/* Main Image - no shadow, no rounded corners, aligned to bottom edge */}
                 <img
                   src="/images/refund%20guy.png"
