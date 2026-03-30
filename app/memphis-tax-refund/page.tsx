@@ -403,14 +403,14 @@ export default function MetaAdsLandingPage() {
       <Header currentPath="/memphis-tax-refund" />
 
       {/* ===== SECTION 1: HERO ===== */}
-      <section className="relative bg-gradient-brand text-white overflow-hidden">
+      <section className="relative bg-gradient-brand text-white" style={{ overflow: "visible" }}>
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-10 right-10 w-64 h-64 bg-white rounded-full blur-3xl" />
           <div className="absolute bottom-0 left-0 w-80 h-80 bg-white rounded-full blur-3xl" />
         </div>
 
         <div className="relative max-w-[1140px] mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-end min-h-[500px] lg:min-h-[700px]">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-end min-h-[500px] lg:min-h-[800px]">
             {/* Left: Text + CTAs */}
             <div className="animate-fade-in-up py-14 md:py-20 lg:py-24 relative z-20">
               <span className="inline-flex items-center gap-2 bg-white/15 text-white text-sm font-bold px-4 py-2 rounded-full mb-5 border border-white/20">
@@ -452,7 +452,7 @@ export default function MetaAdsLandingPage() {
                   src="/images/refund%20guy.png"
                   alt="Tax refund specialist"
                   className="w-full object-contain object-bottom"
-                  style={{ height: "680px" }}
+                  style={{ height: "1360px", marginTop: "-200px" }}
                 />
 
                 {/* Floating Badge 1: $0 Filing */}
