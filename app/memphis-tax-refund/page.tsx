@@ -410,7 +410,7 @@ export default function MetaAdsLandingPage() {
         </div>
 
         <div className="relative max-w-[1140px] mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-end min-h-[500px] lg:min-h-[800px]">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-end min-h-[500px] lg:min-h-[700px]">
             {/* Left: Text + CTAs */}
             <div className="animate-fade-in-up py-14 md:py-20 lg:py-24 relative z-20">
               <span className="inline-flex items-center gap-2 bg-white/15 text-white text-sm font-bold px-4 py-2 rounded-full mb-5 border border-white/20">
@@ -446,13 +446,13 @@ export default function MetaAdsLandingPage() {
             </div>
 
             {/* Right: Full-height image with floating badges */}
-            <div className="hidden lg:flex relative justify-center items-end overflow-visible">
-              <div className="relative w-full">
+            <div className="hidden lg:block relative" style={{ overflow: "visible" }}>
+              <div className="relative" style={{ overflow: "visible" }}>
                 <img
                   src="/images/refund%20guy.png"
                   alt="Tax refund specialist"
-                  className="w-full object-contain object-bottom"
-                  style={{ height: "1360px", marginTop: "-200px" }}
+                  className="absolute bottom-0 right-0 object-contain object-bottom"
+                  style={{ height: "1000px", width: "auto", maxWidth: "none" }}
                 />
 
                 {/* Floating Badge 1: $0 Filing */}
