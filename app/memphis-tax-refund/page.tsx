@@ -446,12 +446,13 @@ export default function MetaAdsLandingPage() {
             </div>
 
             {/* Right: Full-height image with floating badges */}
-            <div className="hidden lg:flex relative justify-center items-end">
+            <div className="hidden lg:flex relative justify-center items-end overflow-visible">
               <div className="relative w-full">
                 <img
                   src="/images/refund%20guy.png"
                   alt="Tax refund specialist"
-                  className="w-full h-auto object-contain object-bottom"
+                  className="w-full object-contain object-bottom"
+                  style={{ height: "680px" }}
                 />
 
                 {/* Floating Badge 1: $0 Filing */}
