@@ -32,22 +32,14 @@ function QualifierQuiz({ onComplete }: { onComplete: () => void }) {
     { question: "Are you in Memphis or nearby?", options: ["Yes", "No"] },
   ];
 
-  const allYes =
-    answers[0] === "Yes" && answers[1] !== "No" && answers[2] === "Yes";
-
   const handleAnswer = (answer: string) => {
     const newAnswers = { ...answers, [step]: answer };
     setAnswers(newAnswers);
-
     if (step < 2) {
-      setStep(step + 1);
+      setTimeout(() => setStep(step + 1), 300);
     } else {
-      if (
-        newAnswers[0] === "Yes" &&
-        newAnswers[1] !== "No" &&
-        newAnswers[2] === "Yes"
-      ) {
-        onComplete();
+      if (newAnswers[0] === "Yes" && newAnswers[1] !== "No" && newAnswers[2] === "Yes") {
+        setTimeout(() => onComplete(), 300);
       }
     }
   };
@@ -60,24 +52,14 @@ function QualifierQuiz({ onComplete }: { onComplete: () => void }) {
       <div className="flex items-center justify-center gap-2 mb-6">
         {questions.map((_, i) => (
           <div key={i} className="flex items-center gap-2">
-            <div
-              className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold transition-all ${
-                i <= step
-                  ? "bg-primary text-white"
-                  : "bg-gray-200 text-gray-400"
-              }`}
-            >
+            <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold transition-all ${i <= step ? "bg-primary text-white" : "bg-gray-200 text-gray-400"}`}>
               {i < step ? (
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                 </svg>
-              ) : (
-                i + 1
-              )}
+              ) : (i + 1)}
             </div>
-            {i < 2 && (
-              <div className={`w-8 h-0.5 ${i < step ? "bg-primary" : "bg-gray-200"}`} />
-            )}
+            {i < 2 && <div className={`w-8 h-0.5 ${i < step ? "bg-primary" : "bg-gray-200"}`} />}
           </div>
         ))}
       </div>
@@ -95,9 +77,7 @@ function QualifierQuiz({ onComplete }: { onComplete: () => void }) {
               <button
                 key={opt}
                 onClick={() => handleAnswer(opt)}
-                className={`quiz-option flex-1 ${
-                  answers[step] === opt ? "selected" : ""
-                }`}
+                className={`quiz-option flex-1 ${answers[step] === opt ? "selected" : ""}`}
               >
                 {opt}
               </button>
@@ -111,16 +91,11 @@ function QualifierQuiz({ onComplete }: { onComplete: () => void }) {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             </svg>
           </div>
-          <h3 className="text-xl font-bold text-text-primary mb-2">
-            We are sorry
-          </h3>
+          <h3 className="text-xl font-bold text-text-primary mb-2">We are sorry</h3>
           <p className="text-text-secondary text-sm mb-4">
             This offer is currently available for Memphis area residents only.
           </p>
-          <a
-            href="tel:+18445030401"
-            className="text-primary font-bold text-sm hover:underline"
-          >
+          <a href="tel:+18445030401" className="text-primary font-bold text-sm hover:underline">
             Still have questions? Call us
           </a>
         </div>
@@ -130,7 +105,10 @@ function QualifierQuiz({ onComplete }: { onComplete: () => void }) {
 }
 
 function LeadForm({ onClose }: { onClose: () => void }) {
+  const [step, setStep] = useState(1);
   const [submitted, setSubmitted] = useState(false);
+  const [w2, setW2] = useState("");
+  const [refund, setRefund] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -146,25 +124,17 @@ function LeadForm({ onClose }: { onClose: () => void }) {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
             </svg>
           </div>
-          <h3 className="text-2xl font-bold text-text-primary mb-2">
-            You Qualify!
-          </h3>
+          <h3 className="text-2xl font-bold text-text-primary mb-2">You Qualify!</h3>
           <p className="text-text-secondary mb-6">
             A tax specialist will contact you shortly to confirm your eligibility.
           </p>
-          <a
-            href="tel:+18445030401"
-            className="btn-primary ripple inline-flex items-center justify-center gap-2 w-full"
-          >
+          <a href="tel:+18445030401" className="btn-primary ripple inline-flex items-center justify-center gap-2 w-full">
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
             </svg>
             Call (844) 503-0401 Now
           </a>
-          <button
-            onClick={onClose}
-            className="mt-4 text-text-muted text-sm hover:text-text-secondary"
-          >
+          <button onClick={onClose} className="mt-4 text-text-muted text-sm hover:text-text-secondary">
             Close
           </button>
         </div>
@@ -174,63 +144,246 @@ function LeadForm({ onClose }: { onClose: () => void }) {
 
   return (
     <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
-      <div className="bg-white rounded-2xl p-6 md:p-8 max-w-md w-full animate-fade-in-up">
-        <div className="flex items-center justify-between mb-6">
-          <h3 className="text-xl font-bold text-text-primary">
-            Pre-Qualify Now
-          </h3>
-          <button
-            onClick={onClose}
-            className="text-text-muted hover:text-text-secondary p-1"
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
+      <div className="bg-white rounded-2xl max-w-3xl w-full overflow-hidden shadow-2xl animate-fade-in-up flex flex-col md:flex-row max-h-[90vh]">
+        {/* Close button */}
+        <button
+          onClick={onClose}
+          className="absolute top-3 right-3 z-10 text-gray-400 hover:text-gray-600 bg-white/80 rounded-full p-1.5 backdrop-blur-sm"
+        >
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+
+        {/* LEFT PANEL: Trust + Context */}
+        <div className="bg-gradient-brand text-white p-8 md:p-10 md:w-[42%] flex-shrink-0 flex flex-col justify-between">
+          <div>
+            <h3 className="text-xl font-bold mb-1">Before You Apply</h3>
+            <p className="text-white/70 text-sm mb-6">What you can expect</p>
+
+            <div className="space-y-4 mb-8">
+              {[
+                "Up to $7,000 refund advance",
+                "$0 upfront filing (simple returns)",
+                "No credit check required",
+                "Instant advance options available",
+              ].map((item) => (
+                <div key={item} className="flex items-center gap-3">
+                  <div className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
+                    <svg className="w-4 h-4 text-yellow-300" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
+                    </svg>
+                  </div>
+                  <span className="text-sm font-semibold">{item}</span>
+                </div>
+              ))}
+            </div>
+
+            <p className="text-xs text-white/40 leading-relaxed mb-8">
+              Advance amounts vary based on eligibility. Fees and terms may apply. Approval depends on expected refund and verification.
+            </p>
+          </div>
+
+          {/* Contact Block */}
+          <div className="space-y-4">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+              </div>
+              <div>
+                <p className="text-xs text-white/60">Call Us Anytime</p>
+                <a href="tel:+18445030401" className="text-sm font-bold hover:text-yellow-300 transition-colors">(844) 503-0401</a>
+              </div>
+            </div>
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <div>
+                <p className="text-xs text-white/60">Email Support</p>
+                <a href="mailto:support@taxshieldservice.com" className="text-sm font-bold hover:text-yellow-300 transition-colors">support@taxshieldservice.com</a>
+              </div>
+            </div>
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+              </div>
+              <div>
+                <p className="text-xs text-white/60">Memphis, TN</p>
+                <p className="text-sm font-bold">Two Locations</p>
+              </div>
+            </div>
+          </div>
         </div>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <label className="block text-sm font-semibold text-text-primary mb-1.5">
-              Full Name
-            </label>
-            <input
-              type="text"
-              required
-              placeholder="John Smith"
-              className="w-full px-4 py-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary"
-            />
+
+        {/* RIGHT PANEL: Form */}
+        <div className="p-6 md:p-8 md:w-[58%] overflow-y-auto">
+          {/* Form Header */}
+          <div className="mb-5">
+            <h3 className="text-xl font-bold text-text-primary mb-1">
+              Check If You Qualify in 60 Seconds
+            </h3>
+            <p className="text-sm text-text-secondary">Simple, fast, and secure.</p>
           </div>
-          <div>
-            <label className="block text-sm font-semibold text-text-primary mb-1.5">
-              Phone Number
-            </label>
-            <input
-              type="tel"
-              required
-              placeholder="(901) 555-0123"
-              className="w-full px-4 py-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary"
-            />
+
+          {/* Progress */}
+          <div className="flex items-center gap-2 mb-6">
+            <div className={`h-1.5 flex-1 rounded-full ${step >= 1 ? "bg-primary" : "bg-gray-200"}`} />
+            <div className={`h-1.5 flex-1 rounded-full ${step >= 2 ? "bg-primary" : "bg-gray-200"}`} />
+            <span className="text-xs font-bold text-text-muted ml-2">Step {step} of 2</span>
           </div>
-          <div>
-            <label className="block text-sm font-semibold text-text-primary mb-1.5">
-              Email (optional)
-            </label>
-            <input
-              type="email"
-              placeholder="john@email.com"
-              className="w-full px-4 py-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary"
-            />
-          </div>
-          <button
-            type="submit"
-            className="btn-primary ripple w-full text-center !py-4"
-          >
-            Check My Eligibility
-          </button>
-          <p className="text-xs text-text-muted text-center">
-            By submitting, you agree to be contacted about tax services.
-          </p>
-        </form>
+
+          <form onSubmit={handleSubmit} className="space-y-5">
+            {step === 1 ? (
+              <>
+                {/* Step 1: Quick Qualifiers */}
+                <div>
+                  <label className="block text-sm font-semibold text-text-primary mb-2">
+                    Do you have W-2 income this year?
+                  </label>
+                  <div className="flex gap-3">
+                    {["Yes", "No"].map((opt) => (
+                      <button
+                        key={opt}
+                        type="button"
+                        onClick={() => setW2(opt)}
+                        className={`quiz-option flex-1 !py-3 ${w2 === opt ? "selected" : ""}`}
+                      >
+                        {opt}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-semibold text-text-primary mb-2">
+                    Are you expecting a tax refund?
+                  </label>
+                  <div className="flex gap-3">
+                    {["Yes", "No", "Not Sure"].map((opt) => (
+                      <button
+                        key={opt}
+                        type="button"
+                        onClick={() => setRefund(opt)}
+                        className={`quiz-option flex-1 !py-3 ${refund === opt ? "selected" : ""}`}
+                      >
+                        {opt}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (w2 && refund) setStep(2);
+                  }}
+                  disabled={!w2 || !refund}
+                  className="btn-primary ripple w-full text-center !py-4 text-lg disabled:opacity-40 disabled:cursor-not-allowed"
+                >
+                  Continue
+                </button>
+              </>
+            ) : (
+              <>
+                {/* Step 2: Full Form */}
+                {/* Personal Info */}
+                <div className="grid grid-cols-2 gap-3">
+                  <div>
+                    <label className="block text-xs font-semibold text-text-primary mb-1.5">First Name</label>
+                    <input type="text" required placeholder="John" className="w-full px-3 py-3 border border-gray-200 rounded-[10px] text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary" />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-semibold text-text-primary mb-1.5">Last Name</label>
+                    <input type="text" required placeholder="Smith" className="w-full px-3 py-3 border border-gray-200 rounded-[10px] text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary" />
+                  </div>
+                </div>
+
+                {/* Contact Info */}
+                <div className="grid grid-cols-2 gap-3">
+                  <div>
+                    <label className="block text-xs font-semibold text-text-primary mb-1.5">Phone</label>
+                    <input type="tel" required placeholder="(901) 555-0123" className="w-full px-3 py-3 border border-gray-200 rounded-[10px] text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary" />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-semibold text-text-primary mb-1.5">Email</label>
+                    <input type="email" placeholder="john@email.com" className="w-full px-3 py-3 border border-gray-200 rounded-[10px] text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary" />
+                  </div>
+                </div>
+
+                {/* Location */}
+                <div>
+                  <label className="block text-xs font-semibold text-text-primary mb-1.5">Address</label>
+                  <input type="text" placeholder="123 Main St" className="w-full px-3 py-3 border border-gray-200 rounded-[10px] text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary" />
+                </div>
+                <div className="grid grid-cols-3 gap-3">
+                  <div>
+                    <label className="block text-xs font-semibold text-text-primary mb-1.5">City</label>
+                    <input type="text" placeholder="Memphis" className="w-full px-3 py-3 border border-gray-200 rounded-[10px] text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary" />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-semibold text-text-primary mb-1.5">State</label>
+                    <input type="text" placeholder="TN" className="w-full px-3 py-3 border border-gray-200 rounded-[10px] text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary" />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-semibold text-text-primary mb-1.5">Zip</label>
+                    <input type="text" placeholder="38118" className="w-full px-3 py-3 border border-gray-200 rounded-[10px] text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary" />
+                  </div>
+                </div>
+
+                {/* Verification */}
+                <div className="grid grid-cols-2 gap-3">
+                  <div>
+                    <label className="block text-xs font-semibold text-text-primary mb-1.5">Last 4 SSN</label>
+                    <input type="text" maxLength={4} placeholder="1234" className="w-full px-3 py-3 border border-gray-200 rounded-[10px] text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary" />
+                    <p className="text-[10px] text-text-muted mt-1">Used only for verification</p>
+                  </div>
+                  <div>
+                    <label className="block text-xs font-semibold text-text-primary mb-1.5">Date of Birth</label>
+                    <input type="date" className="w-full px-3 py-3 border border-gray-200 rounded-[10px] text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary" />
+                  </div>
+                </div>
+
+                {/* Tax Info */}
+                <div>
+                  <label className="block text-xs font-semibold text-text-primary mb-1.5">Expected Refund Amount</label>
+                  <input type="text" placeholder="$3,000" className="w-full px-3 py-3 border border-gray-200 rounded-[10px] text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary" />
+                </div>
+
+                {/* Submit */}
+                <button type="submit" className="btn-primary ripple w-full text-center !py-4 text-lg">
+                  Check My Eligibility
+                </button>
+
+                <div className="flex items-center justify-center gap-1 text-xs text-text-muted">
+                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                  </svg>
+                  Your information is secure
+                </div>
+
+                {/* Form Footer Trust */}
+                <div className="flex flex-wrap justify-center gap-4 pt-2 border-t border-gray-100">
+                  {["No credit check", "No obligation", "Takes < 1 min"].map((item) => (
+                    <span key={item} className="flex items-center gap-1 text-xs text-text-muted">
+                      <svg className="w-3.5 h-3.5 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
+                      </svg>
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </>
+            )}
+          </form>
+        </div>
       </div>
     </div>
   );
