@@ -256,10 +256,10 @@ export default function MetaAdsLandingPage() {
           <div className="absolute bottom-0 left-0 w-80 h-80 bg-white rounded-full blur-3xl" />
         </div>
 
-        <div className="relative max-w-[1140px] mx-auto px-4 sm:px-6 py-14 md:py-20 lg:py-24">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+        <div className="relative max-w-[1140px] mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center min-h-[500px] lg:min-h-[600px]">
             {/* Left: Text + CTAs */}
-            <div className="animate-fade-in-up">
+            <div className="animate-fade-in-up py-14 md:py-20 lg:py-24">
               <span className="inline-flex items-center gap-2 bg-white/15 text-white text-sm font-bold px-4 py-2 rounded-full mb-5 border border-white/20">
                 &#128205; Memphis, Tennessee
               </span>
@@ -293,16 +293,14 @@ export default function MetaAdsLandingPage() {
             </div>
 
             {/* Right: Image with floating bullet badges */}
-            <div className="relative animate-slide-right hidden lg:flex justify-center">
-              <div className="relative w-full max-w-sm">
-                {/* Main Image */}
-                <div className="rounded-2xl overflow-hidden shadow-2xl">
-                  <img
-                    src="/images/refund%20guy.png"
-                    alt="Tax refund specialist"
-                    className="w-full h-auto object-cover"
-                  />
-                </div>
+            <div className="relative animate-slide-right hidden lg:flex justify-end items-end self-end -mb-1">
+              <div className="relative w-full max-w-md">
+                {/* Main Image - no shadow, no rounded corners, aligned to bottom edge */}
+                <img
+                  src="/images/refund%20guy.png"
+                  alt="Tax refund specialist"
+                  className="w-full h-auto object-contain object-bottom"
+                />
 
                 {/* Floating Badge 1: $0 Filing - top left */}
                 <div className="floating-badge -top-4 -left-8 flex items-center gap-2">
