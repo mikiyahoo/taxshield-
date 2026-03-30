@@ -608,81 +608,94 @@ export default function MetaAdsLandingPage() {
         </div>
       </section>
 
-      {/* ===== SECTION 4: OFFER ===== */}
-      <section className="py-12 md:py-16 text-white" style={{ background: "#3d2770" }}>
-        <div className="max-w-[1140px] mx-auto px-4 sm:px-6">
-          <div className="max-w-2xl mx-auto text-center reveal">
-            <h2 className="text-3xl md:text-4xl font-extrabold mb-6">
-              Get Up to $500 — Fast
-            </h2>
-
-            <div className="grid grid-cols-2 gap-4 mb-8 max-w-md mx-auto">
-              {[
-                "No credit check",
-                "$0 upfront cost",
-                "Direct deposit available",
-                "Fast approval",
-              ].map((item) => (
-                <div
-                  key={item}
-                  className="flex items-center gap-2 bg-white/10 rounded-xl px-4 py-3"
-                >
-                  <svg className="w-5 h-5 text-yellow-300 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
-                  </svg>
-                  <span className="font-semibold text-sm">{item}</span>
-                </div>
-              ))}
-            </div>
-
-            <button
-              onClick={() => setShowForm(true)}
-              className="btn-accent ripple text-lg !py-4 !px-10 animate-pulse-glow"
-            >
-              Pre-Qualify Now
-            </button>
-
-            <p className="text-sm text-white/60 mt-4">
-              Advance amounts based on eligibility. Offered through partner banks.
-            </p>
-          </div>
+      {/* ===== SECTION 4 + 5: OFFER & PERFECT FOR YOU ===== */}
+      <section className="relative py-20 md:py-28 text-white overflow-hidden">
+        {/* Background image with gradient overlay */}
+        <div className="absolute inset-0">
+          <img
+            src="/images/office2.webp"
+            alt=""
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, rgba(61,39,112,0.92) 0%, rgba(61,39,112,0.85) 50%, rgba(132,189,0,0.7) 100%)" }} />
         </div>
-      </section>
 
-      {/* ===== SECTION 5: WHO THIS IS FOR ===== */}
-      <section className="py-12 md:py-16 text-white" style={{ background: "#3d2770" }}>
-        <div className="max-w-[1140px] mx-auto px-4 sm:px-6">
-          <div className="max-w-2xl mx-auto text-center reveal">
-            <h2 className="text-3xl md:text-4xl font-extrabold mb-8">
-              This Is Perfect For You If...
-            </h2>
+        <div className="relative max-w-[1140px] mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            {/* Left: Offer */}
+            <div className="reveal">
+              <span className="inline-block bg-white/15 text-white text-xs font-bold px-3 py-1.5 rounded-full mb-4 border border-white/20">
+                Limited Time Offer
+              </span>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-5 leading-tight">
+                Get Up to $500 — Fast
+              </h2>
+              <p className="text-white/70 text-base mb-6 max-w-md">
+                No waiting weeks. Get approved and access your money the same day.
+              </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
-              {[
-                "You worked a W-2 job",
-                "You expect a tax refund",
-                "You want your money faster",
-                "You live in Memphis or nearby",
-              ].map((item) => (
-                <div
-                  key={item}
-                  className="flex items-center gap-3 bg-white/10 rounded-xl px-5 py-4"
-                >
-                  <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
-                    <svg className="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
-                    </svg>
+              <div className="grid grid-cols-2 gap-3 mb-8">
+                {[
+                  { icon: "&#10003;", text: "No credit check" },
+                  { icon: "&#10003;", text: "$0 upfront cost" },
+                  { icon: "&#10003;", text: "Direct deposit" },
+                  { icon: "&#10003;", text: "Fast approval" },
+                ].map((item) => (
+                  <div
+                    key={item.text}
+                    className="flex items-center gap-2.5 bg-white/10 backdrop-blur-sm rounded-xl px-4 py-3 border border-white/10"
+                  >
+                    <span className="w-6 h-6 bg-yellow-400/20 rounded-full flex items-center justify-center text-yellow-300 text-sm font-bold flex-shrink-0">&#10003;</span>
+                    <span className="font-semibold text-sm">{item.text}</span>
                   </div>
-                  <span className="font-semibold text-sm">
-                    {item}
-                  </span>
-                </div>
-              ))}
+                ))}
+              </div>
+
+              <button
+                onClick={() => setShowForm(true)}
+                className="btn-accent btn-glow ripple text-lg !py-4 !px-10"
+              >
+                Pre-Qualify Now
+              </button>
+
+              <p className="text-xs text-white/50 mt-3">
+                Advance amounts based on eligibility. Offered through partner banks.
+              </p>
             </div>
 
-            <p className="text-sm text-white/60">
-              Simple returns qualify for $0 filing.
-            </p>
+            {/* Right: Perfect For You */}
+            <div className="reveal delay-200">
+              <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/15">
+                <h3 className="text-2xl md:text-3xl font-extrabold mb-6">
+                  This Is Perfect For You If...
+                </h3>
+
+                <div className="space-y-4">
+                  {[
+                    "You worked a W-2 job",
+                    "You expect a tax refund",
+                    "You want your money faster",
+                    "You live in Memphis or nearby",
+                  ].map((item, i) => (
+                    <div
+                      key={item}
+                      className="flex items-center gap-4 bg-white/10 rounded-xl px-5 py-4 border border-white/10 hover:bg-white/15 transition-colors"
+                    >
+                      <div className="w-10 h-10 bg-primary/30 rounded-full flex items-center justify-center flex-shrink-0">
+                        <svg className="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20">
+                          <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
+                        </svg>
+                      </div>
+                      <span className="font-semibold text-base">{item}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <p className="text-sm text-white/50 mt-5 text-center">
+                  Simple returns qualify for $0 filing.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
