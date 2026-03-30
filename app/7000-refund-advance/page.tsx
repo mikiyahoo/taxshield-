@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import Head from "next/head";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 export default function TaxAdvancePage() {
   return (
@@ -13,66 +15,7 @@ export default function TaxAdvancePage() {
         <link rel="canonical" href="https://taxshieldservice.com/7000-refund-advance" />
       </Head>
       <div className="min-h-screen bg-white text-black">
-      {/* Top Bar */}
-      <div className="bg-gray-100 py-2">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-sm text-gray-600 text-center">
-            support@taxshieldservice.com
-          </div>
-        </div>
-      </div>
-
-      {/* Main Navigation - Advance Focused */}
-      <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            {/* Logo */}
-            <div className="flex items-center">
-              <div className="flex items-center justify-center w-12 h-12 bg-green-500 rounded-full mr-3">
-                <Image
-                  src="/images/taxshield-logo.webp"
-                  alt="Tax Shield Logo"
-                  width={40}
-                  height={40}
-                  className="w-full h-full object-contain"
-                />
-              </div>
-              <span className="text-xl font-bold">Tax Shield</span>
-            </div>
-
-            {/* Navigation Links - Advance Focused */}
-            <nav className="hidden md:flex space-x-8">
-              <Link href="/" className="text-gray-700 hover:text-green-500 transition-colors font-semibold">Home</Link>
-              <Link href="/memphis-tax-prep" className="text-gray-700 hover:text-green-500 transition-colors">Tax Services</Link>
-              <Link href="/7000-refund-advance" className="text-gray-700 hover:text-green-500 transition-colors font-semibold">Tax Advance</Link>
-              <Link href="/irs-tax-help-memphis" className="text-gray-700 hover:text-green-500 transition-colors">IRS Help</Link>
-            </nav>
-
-            {/* Mobile Menu Button */}
-            <div className="md:hidden flex items-center">
-              <button className="text-gray-700 hover:text-green-500" aria-label="Toggle menu">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              </button>
-            </div>
-
-            {/* Utility Section */}
-            <div className="flex items-center space-x-4">
-              <div className="hidden md:flex items-center text-sm text-gray-600">
-                <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                </svg>
-                <span>Have Any Questions?</span>
-              </div>
-              <div className="text-lg font-semibold">(844) 503-0401</div>
-              <button className="bg-transparent border border-gray-300 text-gray-700 px-4 py-2 rounded-full hover:bg-gray-50 transition-colors">
-                FIND AN OFFICE
-              </button>
-            </div>
-          </div>
-        </div>
-      </header>
+      <Header currentPath="/7000-refund-advance" />
 
       {/* HERO SECTION - ABOVE THE FOLD */}
       <section className="bg-gradient-to-br from-green-500 via-green-600 to-green-700 text-white py-24">
@@ -377,40 +320,7 @@ export default function TaxAdvancePage() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div>
-              <h3 className="text-lg font-bold mb-4">Tax Shield</h3>
-              <p className="text-gray-400">
-                Your trusted Memphis tax preparation and advance experts. 
-                Serving the community with honesty, professionalism, and maximum solutions for over 15 years.
-              </p>
-            </div>
-            <div>
-              <h4 className="text-lg font-bold mb-4">Quick Links</h4>
-              <ul className="space-y-2 text-gray-400">
-              <li><Link href="/" className="hover:text-white transition-colors">Home</Link></li>
-                <li><Link href="/memphis-tax-prep" className="hover:text-white transition-colors">Tax Services</Link></li>
-                <li><Link href="/7000-refund-advance" className="hover:text-white transition-colors">Tax Advances</Link></li>
-                <li><Link href="/irs-tax-help-memphis" className="hover:text-white transition-colors">Locations</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-lg font-bold mb-4">Contact</h4>
-              <div className="space-y-2 text-gray-400">
-                <p>📞 (844) 503-0401</p>
-                <p>📧 support@taxshieldservice.com</p>
-                <p>📍 Two locations serving Memphis</p>
-              </div>
-            </div>
-          </div>
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2024 Tax Shield. All rights reserved. | Memphis, TN</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
     </>
   );

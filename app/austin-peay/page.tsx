@@ -1,83 +1,86 @@
 import Link from "next/link";
 import Image from "next/image";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 export default function AustinPeayPage() {
   return (
     <div className="min-h-screen bg-white text-black">
-      {/* Main Navigation */}
-      <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
-              <Link href="/" className="flex items-center">
-                <div className="flex items-center justify-center w-10 h-10 bg-green-500 rounded-full mr-2">
-                  <span className="text-white font-bold text-lg">TS</span>
-                </div>
-                <span className="text-xl font-bold">Tax Shield</span>
-              </Link>
-            </div>
-
-            <nav className="hidden md:flex space-x-8">
-              <Link href="/" className="text-gray-700 hover:text-green-500 transition-colors font-semibold">Home</Link>
-              <Link href="/memphis-tax-prep" className="text-gray-700 hover:text-green-500 transition-colors">Tax Services</Link>
-              <Link href="/7000-refund-advance" className="text-gray-700 hover:text-green-500 transition-colors">Tax Advance</Link>
-              <Link href="/irs-tax-help-memphis" className="text-gray-700 hover:text-green-500 transition-colors">IRS Help</Link>
-            </nav>
-
-            <div className="flex items-center space-x-4">
-              <div className="text-lg font-semibold">(844) 503-0401</div>
-            </div>
-          </div>
-        </div>
-      </header>
+      <Header currentPath="/austin-peay" />
 
       {/* SECTION 1: HERO */}
-      <section className="bg-gradient-to-br from-green-50 to-white py-16 md:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-              Top-Rated Tax Preparer Near <span className="text-green-500">Austin Peay</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-600 mb-8">
-              148+ 5-Star Reviews &bull; 15+ Years Serving Memphis &bull; Fast & Accurate Filing
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-              <a 
-                href="tel:+18445030401"
-                className="bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-8 rounded-full text-lg transition-colors flex items-center justify-center"
-              >
-                <svg className="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                </svg>
-                Call Now
-              </a>
-              <a 
-                href="https://maps.google.com/?q=3264+Austin+Peay+Hwy+Memphis+TN+38128"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-white border-2 border-green-500 text-green-500 hover:bg-green-500 hover:text-white font-bold py-4 px-8 rounded-full text-lg transition-colors flex items-center justify-center"
-              >
-                <svg className="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
-                Get Directions
-              </a>
-            </div>
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Office Background Image with Green Gradient Overlay */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/office.webp"
+            alt="Tax Shield Office"
+            fill
+            className="object-cover"
+            priority
+            style={{
+              filter: 'brightness(0.6) saturate(1.2)'
+            }}
+          />
+          {/* Green Gradient Overlay from bottom to top */}
+          <div className="absolute inset-0 bg-gradient-to-t from-green-600 via-green-500/80 to-transparent"></div>
+          {/* Subtle pattern overlay */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.1),transparent_50%)]"></div>
+        </div>
 
-            {/* Trust Bar */}
-            <div className="bg-white rounded-2xl shadow-lg p-6 max-w-2xl mx-auto">
-              <div className="flex items-center justify-center gap-2 mb-2">
-                <span className="text-yellow-500 text-2xl">&#9733;</span>
-                <span className="text-yellow-500 text-2xl">&#9733;</span>
-                <span className="text-yellow-500 text-2xl">&#9733;</span>
-                <span className="text-yellow-500 text-2xl">&#9733;</span>
-                <span className="text-yellow-500 text-2xl">&#9733;</span>
-              </div>
-              <p className="text-lg font-semibold text-gray-700">148+ Reviews</p>
-              <p className="text-gray-500">Trusted by Memphis families for over 15 years</p>
+        {/* Hero Content */}
+        <div className="relative z-10 text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-8">
+            <div className="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full px-6 py-3 mb-6 border border-white/30">
+              <span className="text-white font-semibold text-sm">🏆</span>
+              <span className="text-white font-semibold text-sm ml-2">148+ 5-Star Reviews</span>
+              <span className="text-white font-semibold text-sm ml-2">•</span>
+              <span className="text-white font-semibold text-sm ml-2">15+ Years Experience</span>
             </div>
+          </div>
+
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6 drop-shadow-2xl">
+            Top-Rated Tax Preparer Near <span className="text-yellow-300 bg-white/10 px-3 py-1 rounded-lg backdrop-blur-sm">Austin Peay</span>
+          </h1>
+
+          <p className="text-lg md:text-xl text-white/90 mb-10 max-w-2xl mx-auto leading-relaxed">
+            Fast, accurate tax filing with maximum refund strategies. Trusted by Memphis families for over 15 years.
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+            <a 
+              href="tel:+18445030401"
+              className="bg-white text-green-600 font-bold py-4 px-8 rounded-full text-lg transition-all duration-300 hover:bg-gray-100 hover:shadow-xl hover:scale-105 transform flex items-center justify-center shadow-lg"
+            >
+              <svg className="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+              Call Now - (844) 503-0401
+            </a>
+            <a 
+              href="https://maps.google.com/?q=3264+Austin+Peay+Hwy+Memphis+TN+38128"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-transparent border-2 border-white/80 text-white font-bold py-4 px-8 rounded-full text-lg transition-all duration-300 hover:bg-white hover:text-green-600 hover:border-white transform flex items-center justify-center"
+            >
+              <svg className="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              Get Directions
+            </a>
+          </div>
+
+          {/* Trust Indicator */}
+          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 max-w-md mx-auto border border-white/20">
+            <div className="flex items-center justify-center gap-2 mb-2">
+              <span className="text-yellow-300 text-xl">&#9733;</span>
+              <span className="text-yellow-300 text-xl">&#9733;</span>
+              <span className="text-yellow-300 text-xl">&#9733;</span>
+              <span className="text-yellow-300 text-xl">&#9733;</span>
+              <span className="text-yellow-300 text-xl">&#9733;</span>
+            </div>
+            <p className="text-white font-semibold">Trusted by Memphis families for over 15 years</p>
           </div>
         </div>
       </section>
@@ -364,40 +367,7 @@ export default function AustinPeayPage() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div>
-              <h3 className="text-lg font-bold mb-4">Tax Shield</h3>
-              <p className="text-gray-400">
-                Your trusted Memphis tax preparation experts. Serving the community with honesty, 
-                professionalism, and maximum refund strategies for over 15 years.
-              </p>
-            </div>
-            <div>
-              <h4 className="text-lg font-bold mb-4">Quick Links</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li><Link href="/" className="hover:text-white transition-colors">Home</Link></li>
-                <li><Link href="/memphis-tax-prep" className="hover:text-white transition-colors">Services</Link></li>
-                <li><Link href="/7000-refund-advance" className="hover:text-white transition-colors">Tax Advance</Link></li>
-                <li><Link href="/irs-tax-help-memphis" className="hover:text-white transition-colors">IRS Help</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-lg font-bold mb-4">Contact</h4>
-              <div className="space-y-2 text-gray-400">
-                <p>&#9742; (844) 503-0401</p>
-                <p>&#9993; support@taxshieldservice.com</p>
-                <p>&#128205; Two locations serving Memphis</p>
-              </div>
-            </div>
-          </div>
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2024 Tax Shield. All rights reserved. | Memphis, TN</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
