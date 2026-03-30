@@ -22,6 +22,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${plusJakarta.variable} h-full antialiased`}>
+      <head>
+        <script src="https://static.elfsight.com/platform/platform.js" defer></script>
+      </head>
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );
